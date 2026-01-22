@@ -8,86 +8,128 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #f7971e, #ffd200);
-      color: #333;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #141E30, #243B55);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
     }
-    .container {
-      background: rgba(255,255,255,0.9);
+
+    .card {
+      background: rgba(0,0,0,0.4);
       padding: 40px;
-      border-radius: 16px;
+      border-radius: 18px;
       max-width: 420px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 1s ease;
     }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    p {
+      opacity: 0.8;
+      margin-bottom: 25px;
+    }
+
     input {
       width: 100%;
-      padding: 12px;
-      margin: 15px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      margin-bottom: 15px;
       font-size: 16px;
     }
-    button, .btn {
-      display: block;
+
+    button {
+      width: 100%;
       padding: 14px;
-      margin: 15px 0;
       border-radius: 10px;
-      background: #333;
+      border: none;
+      background: #00c6ff;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .error {
+      color: #ff6b6b;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .zona {
+      display: none;
+    }
+
+    a.btn {
+      display: block;
+      margin: 15px 0;
+      padding: 14px;
+      border-radius: 10px;
+      background: #111;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      border: none;
-      cursor: pointer;
     }
-    .hidden { display: none; }
-    .error { color: red; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <div id="login">
-      <h1>Zona Empresas</h1>
-      <p>Introduce la contraseña:</p>
-      <input type="password" id="pass" placeholder="Contraseña">
-      <button onclick="checkPass()">Entrar</button>
-      <p id="msg" class="error"></p>
-    </div>
+<div class="card" id="login">
+  <h1>Zona Empresas</h1>
+  <p>Introduce la contraseña para acceder</p>
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="entrar()">Entrar</button>
+  <div class="error" id="error">❌ Contraseña incorrecta</div>
+</div>
 
-    <div id="content" class="hidden">
-      <h1>Acceso Empresas</h1>
+<div class="card zona" id="zonaEmpresas">
+  <h1>Bienvenido 👋</h1>
 
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeaHtUFKURI0CzC1k7aoqW7xvZXd3QZWqGeI_1jigr7l1-AcA/viewform?usp=dialog" target="_blank">
-        🏢 Publicar oferta de empleo
-      </a>
+  <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeaHtUFKURI0CzC1k7aoqW7xvZXd3QZWqGeI_1jigr7l1-AcA/viewform?usp=dialog" target="_blank">
+    🏢 Publicar oferta de empleo
+  </a>
 
-      <a class="btn" href="https://docs.google.com/spreadsheets/d/1hu1tdCA4dxQal2DJwi7LYxWJXXUHLHJB5SEMZpprC2A/edit?usp=sharing" target="_blank">
-        📄 Ver CV de alumnos
-      </a>
+  <a class="btn" href="https://docs.google.com/spreadsheets/d/1hu1tdCA4dxQal2DJwi7LYxWJXXUHLHJB5SEMZpprC2A/edit?usp=sharing" target="_blank">
+    📄 Ver CV de alumnos
+  </a>
 
-      <a class="btn" href="index.html">⬅ Volver</a>
-    </div>
+  <a class="btn" href="index.html">⬅ Volver</a>
+</div>
 
-  </div>
+<script>
+  function entrar() {
+    const pass = document.getElementById("password").value;
+    const correcta = "Lucena1234";
 
-  <script>
-    function checkPass() {
-      const clave = "Lucena1234"; // 👈 AQUÍ CAMBIA LA CONTRASEÑA
-      const input = document.getElementById("pass").value;
-
-      if (input === clave) {
-        document.getElementById("login").classList.add("hidden");
-        document.getElementById("content").classList.remove("hidden");
-      } else {
-        document.getElementById("msg").innerText = "Contraseña incorrecta";
-      }
+    if (pass === correcta) {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("zonaEmpresas").style.display = "block";
+    } else {
+      document.getElementById("error").style.display = "block";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
