@@ -8,47 +8,83 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg, #11998e, #38ef7d);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
     }
-    .container {
-      background: rgba(0,0,0,0.35);
+
+    .card {
+      background: rgba(0,0,0,0.45);
       padding: 40px;
-      border-radius: 16px;
-      max-width: 500px;
+      border-radius: 20px;
+      max-width: 460px;
       width: 100%;
       text-align: center;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+      animation: fadeIn 1.2s ease;
     }
-    .btn {
+
+    img {
+      max-width: 160px;
+      margin-bottom: 20px;
+      animation: logoIn 1.5s ease;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    a.btn {
       display: block;
-      padding: 15px;
       margin: 15px 0;
-      border-radius: 10px;
-      background: #fff;
-      color: #11998e;
+      padding: 15px;
+      border-radius: 12px;
+      background: #111;
+      color: #fff;
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    a.btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes logoIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <div class="card">
+    <!-- CAMBIA logo.png por el nombre real de tu logo -->
+    <img src="logo.png" alt="Logo del Instituto">
+
     <h1>Zona Alumnos</h1>
 
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc3KXqCuPqMPIX1wBcV2SI3y90WnNpXMcmj0XlkJBBT6ZWzwg/viewform?usp=dialog" target="_blank">
-      📄 Subir mi CV
+      📤 Subir mi CV
     </a>
 
     <a class="btn" href="https://docs.google.com/spreadsheets/d/1ftwG1IExyIKWL0AbY6WUA4xEOFRPOoBmZ6mEddejp-Q/edit?usp=sharing" target="_blank">
-      📋 Ver ofertas de empleo
+      📄 Ver ofertas de empleo
     </a>
 
     <a class="btn" href="index.html">⬅ Volver</a>
   </div>
+
 </body>
-</html>
+</html> 
