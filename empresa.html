@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Empresas – Bolsa de Empleo</title>
+  <title>Acceso Empresas – Bolsa de Empleo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -17,12 +17,29 @@
       min-height: 100vh;
     }
     .container {
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       padding: 40px;
       border-radius: 16px;
       max-width: 500px;
       width: 100%;
       text-align: center;
+      display: none;
+    }
+    .login {
+      background: rgba(255,255,255,0.9);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+    input {
+      padding: 12px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 16px;
     }
     .btn {
       display: block;
@@ -33,11 +50,28 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
+
+  <!-- LOGIN -->
+  <div class="login" id="loginBox">
+    <h1>Acceso Empresas</h1>
+    <p>Introduce la contraseña facilitada por el centro</p>
+    <input type="password" id="password" placeholder="Contraseña de empresa">
+    <button class="btn" onclick="checkPassword()">Entrar</button>
+    <p class="error" id="errorMsg"></p>
+    <a class="btn" href="index.html">⬅ Volver</a>
+  </div>
+
+  <!-- ZONA EMPRESAS -->
+  <div class="container" id="empresaBox">
     <h1>Zona Empresas</h1>
 
     <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeaHtUFKURI0CzC1k7aoqW7xvZXd3QZWqGeI_1jigr7l1-AcA/viewform?usp=dialog" target="_blank">
@@ -50,5 +84,23 @@
 
     <a class="btn" href="index.html">⬅ Volver</a>
   </div>
+
+<script>
+  const CLAVE_EMPRESA = "Lucena1234"; // 🔐 CAMBIA AQUÍ LA CONTRASEÑA
+
+  function checkPassword() {
+    const input = document.getElementById("password").value;
+    if (input === CLAVE_EMPRESA) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("empresaBox").style.display = "block";
+    } else {
+      document.getElementById("errorMsg").textContent = "❌ Contraseña incorrecta";
+    }
+  }
+</script>
+
 </body>
 </html>
+
+     
+
