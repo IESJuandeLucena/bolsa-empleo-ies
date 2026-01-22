@@ -8,48 +8,76 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
       background: linear-gradient(135deg, #1e3c72, #2a5298);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
+      overflow: hidden;
     }
+
     .container {
-      background: rgba(0,0,0,0.35);
-      padding: 40px;
-      border-radius: 16px;
-      max-width: 500px;
-      width: 100%;
+      background: rgba(255,255,255,0.08);
+      padding: 50px 40px;
+      border-radius: 20px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      max-width: 420px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.2s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-    h1 { margin-bottom: 20px; }
+
+    .logo {
+      font-size: 60px;
+      margin-bottom: 10px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    h1 {
+      margin: 10px 0 30px;
+      font-weight: 600;
+    }
+
     .btn {
       display: block;
       padding: 15px;
       margin: 15px 0;
-      border-radius: 10px;
-      background: #fff;
-      color: #1e3c72;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      color: #fff;
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.2s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
+
     .btn:hover {
-      background: #ffdd57;
-      transform: scale(1.05);
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Bolsa de Empleo</h1>
-    <p>IES Juan de Lucena</p>
+    <div class="logo">🎓</div>
+    <h1>Bolsa de Empleo<br>IES Juan de Lucena</h1>
 
-    <a class="btn" href="alumno.html">👨‍🎓 Soy Alumno</a>
-    <a class="btn" href="empresa.html">🏢 Soy Empresa</a>
+    <a class="btn" href="alumno.html">👨‍🎓 Acceso Alumnado</a>
+    <a class="btn" href="empresa.html">🏢 Acceso Empresas</a>
   </div>
 </body>
-</html>
+</html> 
